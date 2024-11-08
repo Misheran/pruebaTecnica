@@ -50,7 +50,7 @@ La aplicación contiene un endpoint REST para consultar los precios de productos
 
 Si se encuentra un precio aplicable la aplicación devuelve un JSON con los datos del producto junto con la tarifa.
 
-- **Ejemplo de respuesta encontrada**: 
+- **Ejemplo de respuesta para precio encontrado**: 
 {
   "productId": 35455,
   "brandId": 1,

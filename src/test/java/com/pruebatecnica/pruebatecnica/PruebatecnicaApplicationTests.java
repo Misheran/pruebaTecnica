@@ -67,5 +67,14 @@ class PruebatecnicaApplicationTests {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.price").value(38.95));
 	}
+
+    @Test
+	public void testPrice6() throws Exception {
+        mockMvc.perform(get("/api/prices")
+            .param("productId", "35455")
+            .param("brandId", "1")
+            .param("applicationDate", "2021-12-31T21:00:00"))
+            .andExpect(status().isNotFound());
+	}
 }
 

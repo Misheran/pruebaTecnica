@@ -25,7 +25,7 @@ public class PriceController {
     @GetMapping
     public ResponseEntity<PriceResponseDTO> getPrice(PriceRequestDTO requestDTO) {
         Optional<PriceResponseDTO> optDto = priceService.getApplicablePrice(requestDTO);
-        return optDto.isPresent() ? ResponseEntity.ok(optDto.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return optDto.isPresent() ? ResponseEntity.ok(optDto.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).build(); //En caso de que el resultado sea distinto de null se devuelve el dto con la información, si es igual a null se devuelve un error 404 NOT_FOUND
     }
 
 }

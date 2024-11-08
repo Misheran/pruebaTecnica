@@ -1,5 +1,7 @@
 package com.pruebatecnica.pruebatecnica.controller;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +24,8 @@ public class PriceController {
 
     @GetMapping
     public ResponseEntity<PriceResponseDTO> getPrice(PriceRequestDTO requestDTO) {
-        return priceService.getApplicablePrice(requestDTO)
-            .map(ResponseEntity::ok)
-            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+        Optional<PriceResponseDTO> optDto = priceService.getApplicablePrice(requestDTO);
+        return optDto.isPresent() ? ResponseEntity.ok(optDto.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
